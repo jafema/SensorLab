@@ -14,6 +14,10 @@
  *    ESP32 DHT11/DHT22 Web Server – Temperature and Humidity using Arduino IDE
  *    https://randomnerdtutorials.com/esp32-dht11-dht22-temperature-humidity-web-server-arduino-ide/#more-39319
  *    
+ *    For getting de IP address:
+ *    ESP32 Web Server Code
+ *    https://randomnerdtutorials.com/esp32-web-server-arduino-ide/
+ *    
  *  Board:
  *     ESP32 Dev Moduler
  *     https://www.az-delivery.de/en/blogs/azdelivery-blog-fur-arduino-und-raspberry-pi/esp32-jetzt-mit-boardverwalter-installieren
@@ -33,9 +37,20 @@
 
 #include <Adafruit_Sensor.h>
 #include <DHT.h>
+// Load Wi-Fi library
+#include <WiFi.h>
 
+// Replace with your network credentials
+
+const char* ssid = "REPLACE_WITH_YOUR_SSID";
+const char* password = "REPLACE_WITH_YOUR_PASSWORD";
 
 #define DHTPIN 13 /* Digital pin connected to the DHT sensor */
+
+
+// Set web server port number to 80
+WiFiServer server(80);
+
 
 /* Uncommented the type of sensor in use: */
 #define DHTTYPE DHT11 // DHT 11
@@ -66,12 +81,35 @@ String readDHTTemperature() {
 }
 
 
+// Current time
+unsigned long currentTime = millis();
+// Previous time
+unsigned long previousTime = 0; 
+// Define timeout time in milliseconds (example: 2000ms = 2s)
+const long timeoutTime = 2000;
+
 
 void setup() {
   // put your setup code here, to run once:
   Serial.begin(115200);
 
   dht.begin();
+
+
+  // Connect to Wi-Fi network with SSID and password
+  Serial.print("Connecting to ");
+  Serial.println(ssid);
+  WiFi.begin(ssid, password);
+  while (WiFi.status() != WL_CONNECTED) {
+    delay(500);
+    Serial.print(".");
+  }
+  // Print local IP address and start web server
+  Serial.println("");
+  Serial.println("WiFi connected.");
+  Serial.println("IP address: ");
+  Serial.println(WiFi.localIP());
+  //server.begin();
 
 }
 
