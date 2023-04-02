@@ -19,7 +19,10 @@
  *    ESP32: Getting Started with Firebase (Realtime Database)
  *    https://randomnerdtutorials.com/esp32-firebase-realtime-database/
  * 
- *    
+ *    ESP32 with Firebase – Creating a Web App
+ *    https://randomnerdtutorials.com/esp32-firebase-web-app/#install-firebase-tools
+ * 
+ *    authDomain: esp32-firebase-demo-e1d9f.firebaseapp.com
  *  Board:
  *     ESP32 Dev Moduler
  *     https://www.az-delivery.de/en/blogs/azdelivery-blog-fur-arduino-und-raspberry-pi/esp32-jetzt-mit-boardverwalter-installieren
@@ -52,14 +55,14 @@
 #include "addons/RTDBHelper.h"
 
 // Insert your network credentials
-#define WIFI_SSID "REPLACE_WITH_YOUR_SSID"
-#define WIFI_PASSWORD " REPLACE_WITH_YOUR_PASSWORD"
+#define WIFI_SSID "" //"REPLACE_WITH_YOUR_SSID"
+#define WIFI_PASSWORD "" //"REPLACE_WITH_YOUR_PASSWORD"
 
 // Insert Firebase project API Key
-#define API_KEY "REPLACE_WITH_YOUR_FIREBASE_PROJECT_API_KEY"
+#define API_KEY "" //"REPLACE_WITH_YOUR_FIREBASE_PROJECT_API_KEY"
 
 // Insert RTDB URLefine the RTDB URL */
-#define DATABASE_URL "REPLACE_WITH_YOUR_FIREBASE_DATABASE_URL" 
+#define DATABASE_URL "" //"REPLACE_WITH_YOUR_FIREBASE_DATABASE_URL" 
 
 
 /**
